@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<title>Rodriguez_ComoVenderProducto</title>
+<style>
+  :root{
+    --bg:#f4f6f9;
+    --card:#ffffff;
+    --line:#33475b;
+    --terminal-fill:#2f6f4f;
+    --terminal-text:#ffffff;
+    --process-fill:#eaf1fb;
+    --process-stroke:#2b5a8c;
+    --decision-fill:#fff4e0;
+    --decision-stroke:#b8720c;
+    --text:#1f2937;
+    --label-bg:#f4f6f9;
+  }
+  *{box-sizing:border-box;}
+  body{
+    margin:0;
+    padding:24px 12px 48px;
+    background:var(--bg);
+    font-family:'Segoe UI', Arial, sans-serif;
+    color:var(--text);
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+  }
+  h1{
+    font-size:20px;
+    text-align:center;
+    max-width:800px;
+    margin:0 0 4px;
+    color:#111827;
+  }
+  h2{
+    font-size:13px;
+    font-weight:400;
+    color:#6b7280;
+    margin:0 0 24px;
+    text-align:center;
+  }
+  .diagram-wrap{
+    background:var(--card);
+    border-radius:12px;
+    box-shadow:0 2px 10px rgba(0,0,0,0.08);
+    padding:16px;
+    max-width:960px;
+    width:100%;
+    overflow-x:auto;
+  }
+  svg{
+    display:block;
+    margin:0 auto;
+  }
+  .node-text{
+    font-family:'Segoe UI', Arial, sans-serif;
+    font-size:13px;
+    fill:var(--text);
+    text-anchor:middle;
+  }
+  .terminal-text{
+    font-family:'Segoe UI', Arial, sans-serif;
+    font-size:14px;
+    font-weight:600;
+    fill:var(--terminal-text);
+    text-anchor:middle;
+  }
+  .edge-label{
+    font-family:'Segoe UI', Arial, sans-serif;
+    font-size:12px;
+    font-weight:600;
+    fill:#374151;
+    text-anchor:middle;
+  }
+  .legend{
+    max-width:960px;
+    width:100%;
+    display:flex;
+    gap:20px;
+    flex-wrap:wrap;
+    justify-content:center;
+    margin-top:16px;
+    font-size:12px;
+    color:#4b5563;
+  }
+  .legend span{
+    display:inline-flex;
+    align-items:center;
+    gap:6px;
+  }
+  .swatch{
+    width:14px;height:14px;border-radius:3px;display:inline-block;
+  }
+</style>
+</head>
+<body>
+
+<h1>Estrategia de Ventas y Adquisición de Usuarios</h1>
+<h2>Diagrama de flujo: cómo vender el producto de esports</h2>
+
+<div class="diagram-wrap">
+<svg viewBox="0 0 900 1100" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <marker id="arrow" markerWidth="10" markerHeight="10" refX="8" refY="3" orient="auto" markerUnits="strokeWidth">
+      <path d="M0,0 L0,6 L9,3 z" fill="var(--line)"/>
+    </marker>
+  </defs>
+
+  <!-- EDGES -->
+  <!-- A -> B1 -->
+  <line x1="420" y1="90" x2="420" y2="150" stroke="var(--line)" stroke-width="2" marker-end="url(#arrow)"/>
+  <!-- B1 -> B2 -->
+  <line x1="420" y1="230" x2="420" y2="280" stroke="var(--line)" stroke-width="2" marker-end="url(#arrow)"/>
+  <!-- B2 -> C -->
+  <line x1="420" y1="360" x2="420" y2="410" stroke="var(--line)" stroke-width="2" marker-end="url(#arrow)"/>
+  <!-- C -> D (NO, right) -->
+  <path d="M530,480 H650" stroke="var(--line)" stroke-width="2" fill="none" marker-end="url(#arrow)"/>
+  <rect x="565" y="458" width="34" height="18" fill="var(--label-bg)"/>
+  <text x="582" y="472" class="edge-label">NO</text>
+  <!-- D -> B1 (loop back up) -->
+  <path d="M750,445 V190 H520" stroke="var(--line)" stroke-width="2" fill="none" marker-end="url(#arrow)"/>
+  <!-- C -> E (SI, down) -->
+  <line x1="420" y1="550" x2="420" y2="580" stroke="var(--line)" stroke-width="2" marker-end="url(#arrow)"/>
+  <rect x="403" y="555" width="34" height="18" fill="var(--label-bg)"/>
+  <text x="420" y="569" class="edge-label">SÍ</text>
+  <!-- E -> F -->
+  <line x1="420" y1="670" x2="420" y2="720" stroke="var(--line)" stroke-width="2" marker-end="url(#arrow)"/>
+  <!-- F -> G -->
+  <line x1="420" y1="800" x2="420" y2="850" stroke="var(--line)" stroke-width="2" marker-end="url(#arrow)"/>
+  <!-- G -> H -->
+  <line x1="420" y1="940" x2="420" y2="990" stroke="var(--line)" stroke-width="2" marker-end="url(#arrow)"/>
+
+  <!-- NODES -->
+
+  <!-- A: INICIO -->
+  <rect x="350" y="30" width="140" height="60" rx="30" ry="30" fill="var(--terminal-fill)"/>
+  <text x="420" y="65" class="terminal-text">INICIO</text>
+
+  <!-- B1 -->
+  <rect x="320" y="150" width="200" height="80" rx="6" fill="var(--process-fill)" stroke="var(--process-stroke)" stroke-width="1.5"/>
+  <text x="420" y="182" class="node-text">ORGANIZAR TORNEO GRATUITO</text>
+  <text x="420" y="200" class="node-text">DE LANZAMIENTO (sin comisión)</text>
+
+  <!-- B2 -->
+  <rect x="320" y="280" width="200" height="80" rx="6" fill="var(--process-fill)" stroke="var(--process-stroke)" stroke-width="1.5"/>
+  <text x="420" y="312" class="node-text">EQUIPOS Y JUGADORES</text>
+  <text x="420" y="330" class="node-text">PRUEBAN LA PLATAFORMA</text>
+
+  <!-- C: decision -->
+  <polygon points="420,410 530,480 420,550 310,480" fill="var(--decision-fill)" stroke="var(--decision-stroke)" stroke-width="1.5"/>
+  <text x="420" y="470" class="node-text">¿HUBO BUENA PARTICIPACIÓN</text>
+  <text x="420" y="486" class="node-text">Y FEEDBACK POSITIVO?</text>
+
+  <!-- D -->
+  <rect x="650" y="445" width="200" height="70" rx="6" fill="var(--process-fill)" stroke="var(--process-stroke)" stroke-width="1.5"/>
+  <text x="750" y="473" class="node-text">AJUSTAR JUEGO, FORMATO</text>
+  <text x="750" y="491" class="node-text">O PROMOCIÓN</text>
+
+  <!-- E -->
+  <rect x="320" y="580" width="200" height="90" rx="6" fill="var(--process-fill)" stroke="var(--process-stroke)" stroke-width="1.5"/>
+  <text x="420" y="615" class="node-text">LANZAR LIGA MENSUAL DE PAGO</text>
+  <text x="420" y="633" class="node-text">CON PREMIOS REALES</text>
+
+  <!-- F -->
+  <rect x="310" y="720" width="220" height="80" rx="6" fill="var(--process-fill)" stroke="var(--process-stroke)" stroke-width="1.5"/>
+  <text x="420" y="752" class="node-text">CAPITANES DE EQUIPO SE VUELVEN</text>
+  <text x="420" y="770" class="node-text">EMBAJADORES (boca a boca)</text>
+
+  <!-- G -->
+  <rect x="300" y="850" width="240" height="90" rx="6" fill="var(--process-fill)" stroke="var(--process-stroke)" stroke-width="1.5"/>
+  <text x="420" y="885" class="node-text">OFRECER SUSCRIPCIÓN PREMIUM Y</text>
+  <text x="420" y="903" class="node-text">BUSCAR PATROCINADORES LOCALES</text>
+
+  <!-- H: FIN -->
+  <rect x="350" y="990" width="140" height="60" rx="30" ry="30" fill="var(--terminal-fill)"/>
+  <text x="420" y="1025" class="terminal-text">FIN</text>
+
+</svg>
+</div>
+
+<div class="legend">
+  <span><span class="swatch" style="background:var(--terminal-fill)"></span>Inicio / Fin</span>
+  <span><span class="swatch" style="background:var(--process-fill);border:1.5px solid var(--process-stroke)"></span>Proceso</span>
+  <span><span class="swatch" style="background:var(--decision-fill);border:1.5px solid var(--decision-stroke)"></span>Decisión</span>
+</div>
+
+<a href="index.html" style="display:inline-block;margin-top:24px;padding:12px 26px;background:#2b5a8c;color:#ffffff;text-decoration:none;font-weight:bold;border-radius:6px;font-family:'Segoe UI', Arial, sans-serif;">← VOLVER AL PRINCIPAL</a>
+
+</body>
+</html>

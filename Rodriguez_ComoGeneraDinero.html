@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<title>Rodriguez_ComoGeneraDinero</title>
+<style>
+  :root{
+    --bg:#f4f6f9;
+    --card:#ffffff;
+    --line:#33475b;
+    --terminal-fill:#2f6f4f;
+    --terminal-text:#ffffff;
+    --process-fill:#eaf1fb;
+    --process-stroke:#2b5a8c;
+    --decision-fill:#fff4e0;
+    --decision-stroke:#b8720c;
+    --text:#1f2937;
+    --label-bg:#f4f6f9;
+  }
+  *{box-sizing:border-box;}
+  body{
+    margin:0;
+    padding:24px 12px 48px;
+    background:var(--bg);
+    font-family:'Segoe UI', Arial, sans-serif;
+    color:var(--text);
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+  }
+  h1{
+    font-size:20px;
+    text-align:center;
+    max-width:800px;
+    margin:0 0 4px;
+    color:#111827;
+  }
+  h2{
+    font-size:13px;
+    font-weight:400;
+    color:#6b7280;
+    margin:0 0 24px;
+    text-align:center;
+  }
+  .diagram-wrap{
+    background:var(--card);
+    border-radius:12px;
+    box-shadow:0 2px 10px rgba(0,0,0,0.08);
+    padding:16px;
+    max-width:960px;
+    width:100%;
+    overflow-x:auto;
+  }
+  svg{
+    display:block;
+    margin:0 auto;
+  }
+  .node-text{
+    font-family:'Segoe UI', Arial, sans-serif;
+    font-size:13px;
+    fill:var(--text);
+    text-anchor:middle;
+  }
+  .terminal-text{
+    font-family:'Segoe UI', Arial, sans-serif;
+    font-size:14px;
+    font-weight:600;
+    fill:var(--terminal-text);
+    text-anchor:middle;
+  }
+  .edge-label{
+    font-family:'Segoe UI', Arial, sans-serif;
+    font-size:12px;
+    font-weight:600;
+    fill:#374151;
+    text-anchor:middle;
+  }
+  .legend{
+    max-width:960px;
+    width:100%;
+    display:flex;
+    gap:20px;
+    flex-wrap:wrap;
+    justify-content:center;
+    margin-top:16px;
+    font-size:12px;
+    color:#4b5563;
+  }
+  .legend span{
+    display:inline-flex;
+    align-items:center;
+    gap:6px;
+  }
+  .swatch{
+    width:14px;height:14px;border-radius:3px;display:inline-block;
+  }
+</style>
+</head>
+<body>
+
+<h1>Modelo de Ingresos de la Plataforma de Esports</h1>
+<h2>Diagrama de flujo: cómo genera dinero la plataforma</h2>
+
+<div class="diagram-wrap">
+<svg viewBox="0 0 900 700" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <marker id="arrow" markerWidth="10" markerHeight="10" refX="8" refY="3" orient="auto" markerUnits="strokeWidth">
+      <path d="M0,0 L0,6 L9,3 z" fill="var(--line)"/>
+    </marker>
+  </defs>
+
+  <!-- EDGES -->
+  <!-- A -> B1, B2, B3 -->
+  <path d="M450,90 V130 H200 V150" stroke="var(--line)" stroke-width="2" fill="none" marker-end="url(#arrow)"/>
+  <path d="M450,90 V150" stroke="var(--line)" stroke-width="2" fill="none" marker-end="url(#arrow)"/>
+  <path d="M450,90 V130 H700 V150" stroke="var(--line)" stroke-width="2" fill="none" marker-end="url(#arrow)"/>
+
+  <!-- B1, B2, B3 -> D -->
+  <line x1="200" y1="220" x2="410" y2="300" stroke="var(--line)" stroke-width="2" marker-end="url(#arrow)"/>
+  <line x1="450" y1="220" x2="450" y2="300" stroke="var(--line)" stroke-width="2" marker-end="url(#arrow)"/>
+  <line x1="700" y1="220" x2="490" y2="300" stroke="var(--line)" stroke-width="2" marker-end="url(#arrow)"/>
+
+  <!-- D -> E -->
+  <line x1="450" y1="370" x2="450" y2="430" stroke="var(--line)" stroke-width="2" marker-end="url(#arrow)"/>
+
+  <!-- E -> F -->
+  <line x1="450" y1="520" x2="450" y2="580" stroke="var(--line)" stroke-width="2" marker-end="url(#arrow)"/>
+
+  <!-- NODES -->
+
+  <!-- A: INICIO -->
+  <rect x="380" y="30" width="140" height="60" rx="30" ry="30" fill="var(--terminal-fill)"/>
+  <text x="450" y="65" class="terminal-text">INICIO</text>
+
+  <!-- B1 -->
+  <rect x="90" y="150" width="220" height="70" rx="6" fill="var(--process-fill)" stroke="var(--process-stroke)" stroke-width="1.5"/>
+  <text x="200" y="178" class="node-text">EQUIPOS PAGAN CUOTA</text>
+  <text x="200" y="196" class="node-text">DE INSCRIPCIÓN (15-20% comisión)</text>
+
+  <!-- B2 -->
+  <rect x="340" y="150" width="220" height="70" rx="6" fill="var(--process-fill)" stroke="var(--process-stroke)" stroke-width="1.5"/>
+  <text x="450" y="178" class="node-text">NEGOCIOS PAGAN</text>
+  <text x="450" y="196" class="node-text">PATROCINIO LOCAL</text>
+
+  <!-- B3 -->
+  <rect x="590" y="150" width="220" height="70" rx="6" fill="var(--process-fill)" stroke="var(--process-stroke)" stroke-width="1.5"/>
+  <text x="700" y="178" class="node-text">JUGADORES PAGAN</text>
+  <text x="700" y="196" class="node-text">SUSCRIPCIÓN PREMIUM</text>
+
+  <!-- D -->
+  <rect x="340" y="300" width="220" height="70" rx="6" fill="var(--process-fill)" stroke="var(--process-stroke)" stroke-width="1.5"/>
+  <text x="450" y="328" class="node-text">INGRESOS TOTALES</text>
+  <text x="450" y="346" class="node-text">DE LA PLATAFORMA</text>
+
+  <!-- E -->
+  <rect x="310" y="430" width="280" height="90" rx="6" fill="var(--process-fill)" stroke="var(--process-stroke)" stroke-width="1.5"/>
+  <text x="450" y="465" class="node-text">REINVERSIÓN Y CRECIMIENTO</text>
+  <text x="450" y="483" class="node-text">(servidores, premios, marketing)</text>
+
+  <!-- F: FIN -->
+  <rect x="380" y="580" width="140" height="60" rx="30" ry="30" fill="var(--terminal-fill)"/>
+  <text x="450" y="615" class="terminal-text">FIN</text>
+
+</svg>
+</div>
+
+<div class="legend">
+  <span><span class="swatch" style="background:var(--terminal-fill)"></span>Inicio / Fin</span>
+  <span><span class="swatch" style="background:var(--process-fill);border:1.5px solid var(--process-stroke)"></span>Proceso / Fuente de ingreso</span>
+</div>
+
+<a href="index.html" style="display:inline-block;margin-top:24px;padding:12px 26px;background:#2b5a8c;color:#ffffff;text-decoration:none;font-weight:bold;border-radius:6px;font-family:'Segoe UI', Arial, sans-serif;">← VOLVER AL PRINCIPAL</a>
+
+</body>
+</html>

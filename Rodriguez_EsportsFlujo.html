@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<title>Rodriguez_EsportsFlujo</title>
+<style>
+  :root{
+    --bg:#f4f6f9;
+    --card:#ffffff;
+    --line:#33475b;
+    --terminal-fill:#2f6f4f;
+    --terminal-text:#ffffff;
+    --process-fill:#eaf1fb;
+    --process-stroke:#2b5a8c;
+    --decision-fill:#fff4e0;
+    --decision-stroke:#b8720c;
+    --text:#1f2937;
+    --label-bg:#f4f6f9;
+  }
+  *{box-sizing:border-box;}
+  body{
+    margin:0;
+    padding:24px 12px 48px;
+    background:var(--bg);
+    font-family:'Segoe UI', Arial, sans-serif;
+    color:var(--text);
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+  }
+  h1{
+    font-size:20px;
+    text-align:center;
+    max-width:800px;
+    margin:0 0 4px;
+    color:#111827;
+  }
+  h2{
+    font-size:13px;
+    font-weight:400;
+    color:#6b7280;
+    margin:0 0 24px;
+    text-align:center;
+  }
+  .diagram-wrap{
+    background:var(--card);
+    border-radius:12px;
+    box-shadow:0 2px 10px rgba(0,0,0,0.08);
+    padding:16px;
+    max-width:960px;
+    width:100%;
+    overflow-x:auto;
+  }
+  svg{
+    display:block;
+    margin:0 auto;
+  }
+  .node-text{
+    font-family:'Segoe UI', Arial, sans-serif;
+    font-size:13px;
+    fill:var(--text);
+    text-anchor:middle;
+  }
+  .terminal-text{
+    font-family:'Segoe UI', Arial, sans-serif;
+    font-size:14px;
+    font-weight:600;
+    fill:var(--terminal-text);
+    text-anchor:middle;
+  }
+  .edge-label{
+    font-family:'Segoe UI', Arial, sans-serif;
+    font-size:12px;
+    font-weight:600;
+    fill:#374151;
+    text-anchor:middle;
+  }
+  .legend{
+    max-width:960px;
+    width:100%;
+    display:flex;
+    gap:20px;
+    flex-wrap:wrap;
+    justify-content:center;
+    margin-top:16px;
+    font-size:12px;
+    color:#4b5563;
+  }
+  .legend span{
+    display:inline-flex;
+    align-items:center;
+    gap:6px;
+  }
+  .swatch{
+    width:14px;height:14px;border-radius:3px;display:inline-block;
+  }
+</style>
+</head>
+<body>
+
+<h1>Plataforma de Ligas y Torneos de Esports Amateur</h1>
+<h2>Diagrama de flujo del ciclo competitivo de un equipo</h2>
+
+<div class="diagram-wrap">
+<svg viewBox="0 0 900 1460" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <marker id="arrow" markerWidth="10" markerHeight="10" refX="8" refY="3" orient="auto" markerUnits="strokeWidth">
+      <path d="M0,0 L0,6 L9,3 z" fill="var(--line)"/>
+    </marker>
+  </defs>
+
+  <!-- EDGES (drawn first, behind nodes) -->
+  <!-- A -> B -->
+  <line x1="420" y1="90" x2="420" y2="150" stroke="var(--line)" stroke-width="2" marker-end="url(#arrow)"/>
+  <!-- B -> C -->
+  <line x1="420" y1="220" x2="420" y2="260" stroke="var(--line)" stroke-width="2" marker-end="url(#arrow)"/>
+  <!-- C -> D (NO, right) -->
+  <path d="M510,320 H650" stroke="var(--line)" stroke-width="2" fill="none" marker-end="url(#arrow)"/>
+  <rect x="475" y="298" width="34" height="18" fill="var(--label-bg)"/>
+  <text x="492" y="312" class="edge-label">NO</text>
+  <!-- D -> C (loop back up) -->
+  <path d="M735,290 V245 H510" stroke="var(--line)" stroke-width="2" fill="none" marker-end="url(#arrow)"/>
+  <!-- C -> E (SI, down) -->
+  <line x1="420" y1="380" x2="420" y2="470" stroke="var(--line)" stroke-width="2" marker-end="url(#arrow)"/>
+  <rect x="403" y="415" width="34" height="18" fill="var(--label-bg)"/>
+  <text x="420" y="429" class="edge-label">SÍ</text>
+  <!-- E -> F -->
+  <line x1="420" y1="550" x2="420" y2="600" stroke="var(--line)" stroke-width="2" marker-end="url(#arrow)"/>
+  <!-- F -> G -->
+  <line x1="420" y1="670" x2="420" y2="720" stroke="var(--line)" stroke-width="2" marker-end="url(#arrow)"/>
+  <!-- G -> H -->
+  <line x1="420" y1="800" x2="420" y2="830" stroke="var(--line)" stroke-width="2" marker-end="url(#arrow)"/>
+  <!-- H -> I (NO, right) -->
+  <path d="M510,890 H650" stroke="var(--line)" stroke-width="2" fill="none" marker-end="url(#arrow)"/>
+  <rect x="475" y="868" width="34" height="18" fill="var(--label-bg)"/>
+  <text x="492" y="882" class="edge-label">NO</text>
+  <!-- H -> K (SI, down) -->
+  <line x1="420" y1="950" x2="420" y2="1000" stroke="var(--line)" stroke-width="2" marker-end="url(#arrow)"/>
+  <rect x="403" y="965" width="34" height="18" fill="var(--label-bg)"/>
+  <text x="420" y="979" class="edge-label">SÍ</text>
+  <!-- K -> F (NO, loop left back up) -->
+  <path d="M330,1060 H180 V635 H340" stroke="var(--line)" stroke-width="2" fill="none" marker-end="url(#arrow)"/>
+  <rect x="120" y="820" width="130" height="18" fill="var(--label-bg)"/>
+  <text x="185" y="834" class="edge-label">NO (siguiente ronda)</text>
+  <!-- K -> L (SI, down) -->
+  <line x1="420" y1="1120" x2="420" y2="1180" stroke="var(--line)" stroke-width="2" marker-end="url(#arrow)"/>
+  <rect x="403" y="1145" width="34" height="18" fill="var(--label-bg)"/>
+  <text x="420" y="1159" class="edge-label">SÍ</text>
+  <!-- L -> M -->
+  <line x1="420" y1="1260" x2="420" y2="1350" stroke="var(--line)" stroke-width="2" marker-end="url(#arrow)"/>
+  <!-- I -> M -->
+  <path d="M730,930 V1380 H500" stroke="var(--line)" stroke-width="2" fill="none" marker-end="url(#arrow)"/>
+
+  <!-- NODES -->
+
+  <!-- A: INICIO -->
+  <rect x="350" y="30" width="140" height="60" rx="30" ry="30" fill="var(--terminal-fill)"/>
+  <text x="420" y="65" class="terminal-text">INICIO</text>
+
+  <!-- B -->
+  <rect x="330" y="150" width="180" height="70" rx="6" fill="var(--process-fill)" stroke="var(--process-stroke)" stroke-width="1.5"/>
+  <text x="420" y="180" class="node-text">EQUIPO SE REGISTRA</text>
+  <text x="420" y="198" class="node-text">EN LA PLATAFORMA</text>
+
+  <!-- C: decision -->
+  <polygon points="420,260 510,320 420,380 330,320" fill="var(--decision-fill)" stroke="var(--decision-stroke)" stroke-width="1.5"/>
+  <text x="420" y="310" class="node-text">¿CUOTA DE INSCRIPCIÓN</text>
+  <text x="420" y="326" class="node-text">PAGADA?</text>
+
+  <!-- D -->
+  <rect x="650" y="290" width="170" height="60" rx="6" fill="var(--process-fill)" stroke="var(--process-stroke)" stroke-width="1.5"/>
+  <text x="735" y="315" class="node-text">SISTEMA SOLICITA PAGO</text>
+  <text x="735" y="333" class="node-text">DE INSCRIPCIÓN</text>
+
+  <!-- E -->
+  <rect x="325" y="470" width="190" height="80" rx="6" fill="var(--process-fill)" stroke="var(--process-stroke)" stroke-width="1.5"/>
+  <text x="420" y="500" class="node-text">EQUIPO ES ASIGNADO A</text>
+  <text x="420" y="518" class="node-text">LLAVE (BRACKET) DEL TORNEO</text>
+
+  <!-- F -->
+  <rect x="330" y="600" width="180" height="70" rx="6" fill="var(--process-fill)" stroke="var(--process-stroke)" stroke-width="1.5"/>
+  <text x="420" y="628" class="node-text">EQUIPO JUEGA PARTIDA</text>
+  <text x="420" y="646" class="node-text">PROGRAMADA</text>
+
+  <!-- G -->
+  <rect x="325" y="720" width="190" height="80" rx="6" fill="var(--process-fill)" stroke="var(--process-stroke)" stroke-width="1.5"/>
+  <text x="420" y="750" class="node-text">CAPITÁN SUBE CAPTURA</text>
+  <text x="420" y="768" class="node-text">DE RESULTADO</text>
+
+  <!-- H: decision -->
+  <polygon points="420,830 520,890 420,950 320,890" fill="var(--decision-fill)" stroke="var(--decision-stroke)" stroke-width="1.5"/>
+  <text x="420" y="880" class="node-text">¿EQUIPO GANADOR</text>
+  <text x="420" y="896" class="node-text">DE LA RONDA?</text>
+
+  <!-- I -->
+  <rect x="650" y="860" width="170" height="70" rx="6" fill="var(--process-fill)" stroke="var(--process-stroke)" stroke-width="1.5"/>
+  <text x="735" y="888" class="node-text">EQUIPO ELIMINADO</text>
+  <text x="735" y="906" class="node-text">DEL TORNEO</text>
+
+  <!-- K: decision -->
+  <polygon points="420,1000 520,1060 420,1120 320,1060" fill="var(--decision-fill)" stroke="var(--decision-stroke)" stroke-width="1.5"/>
+  <text x="420" y="1055" class="node-text">¿ES LA RONDA</text>
+  <text x="420" y="1071" class="node-text">FINAL?</text>
+
+  <!-- L -->
+  <rect x="325" y="1180" width="190" height="80" rx="6" fill="var(--process-fill)" stroke="var(--process-stroke)" stroke-width="1.5"/>
+  <text x="420" y="1208" class="node-text">EQUIPO RECIBE PREMIO</text>
+  <text x="420" y="1226" class="node-text">DE LA BOLSA</text>
+  <text x="420" y="1244" class="node-text">(80–85% de las inscripciones)</text>
+
+  <!-- M: FIN -->
+  <rect x="350" y="1350" width="140" height="60" rx="30" ry="30" fill="var(--terminal-fill)"/>
+  <text x="420" y="1385" class="terminal-text">FIN</text>
+
+</svg>
+</div>
+
+<div class="legend">
+  <span><span class="swatch" style="background:var(--terminal-fill)"></span>Inicio / Fin</span>
+  <span><span class="swatch" style="background:var(--process-fill);border:1.5px solid var(--process-stroke)"></span>Proceso</span>
+  <span><span class="swatch" style="background:var(--decision-fill);border:1.5px solid var(--decision-stroke)"></span>Decisión</span>
+</div>
+
+</body>
+</html>
